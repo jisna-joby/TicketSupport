@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Ticket>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Ticket List</h2>
+        </div>
+    </div>
+    <br /><br />
+
+    <form method="get" asp-action="Index">
+        <p>
+            <input type="search" placeholder="Search Here.............." value="@ViewData["GetDetails"]" name="Valsearch" />
+            <br />
+            <br />
+            <input type="submit" value="Search" class="btn btn-primary" />
+            
+            <a asp-action="Index"> Get List of All Created Tickets</a>
+        </p>
+    </form>
+
+
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+            <tr>
+                <th>
+                    Project Name
+                </th>
+                <th>
+                    Department Name
+                </th>
+                <th>
+                    Requested By
+                </th>
+                <th>
+                    Description of the Problem
+                </th>
+                <th>
+                    Created Date and Time
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var obj in Model)
+            {
+                <tr>
+                    <td width="30%">
+                        @obj.ProjectName
+                    </td>
+                    <td width="30%">
+                        @obj.DeptName
+                    </td>
+                    <td width="30%">
+                        @obj.EmployeeName
+                    </td>
+                    <td width="30%">
+                        @obj.Description
+                    </td>
+                    <td width="30%">
+                        @obj.CreatedDateTime
+                    </td>
+
+                </tr>
+            }
+        </tbody>
